@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FantasticBoxCo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta name="author" content="@alliants">
+  <link rel="stylesheet" media="all" href="/css/application.css">
+  <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body>
+
+  <header>
+    <h1 class="logo">FantasticBoxCo</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <aside>
+        <ul class="progress">
+          <li>
+            <a href="#step-1" class="step step-1 is-active">
+              <div class="step-number">1</div>
+              <h3 class="step-heading">Dimensions &amp; Quantity</h3>
+              <dl>
+                <dt>Width:</dt>
+                <dd>0.0m</dd>
+                <dt>Height:</dt>
+                <dd>0.0m</dd>
+                <dt>Length:</dt>
+                <dd>0.0m</dd>
+                <dt>Quantity:</dt>
+                <dd>0</dd>
+              </dl>
+            </a>
+          </li>
+          <li>
+            <a href="#step-2" class="step step-2">
+              <div class="step-number">2</div>
+              <h3 class="step-heading">Cardboard Grade</h3>
+              <span class="step-value">-</span>
+            </a>
+          </li>
+          <li>
+            <a href="#step-3" class="step step-3">
+              <div class="step-number">3</div>
+              <h3 class="step-heading">Print Quality</h3>
+              <span class="step-value">-</span>
+            </a>
+          </li>
+          <li>
+            <a href="#step-4" class="step step-4">
+              <div class="step-number">4</div>
+              <h3 class="step-heading">Optional Extras</h3>
+              <span class="step-value">-</span>
+            </a>
+          </li>
+          <li>
+            <a href="#total-cost" class="step step-total-cost">
+              <h3 class="step-total-cost-heading">Total Cost</h3>
+              <div class="step-total-cost-value">&pound;0.00</div>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <section>
+
+        <div id="step-1" class="content-step">
+          <h2>Step 1 - Dimensions &amp; Quantity</h2>
+
+          <p class="intro">
+            Enter the width, height, length and quantity of the box(es) you require.
+          </p>
+
+          <div class="form-row">
+            <label for="width">Width:</label>
+            <input type="number" name="width" id="width" value="0" min="0" step="0.01">
+          </div>
+
+          <div class="form-row">
+            <label for="height">Height:</label>
+            <input type="number" name="height" id="height" value="0" min="0" step="0.01">
+          </div>
+
+          <div class="form-row">
+            <label for="length">Length:</label>
+            <input type="number" name="length" id="length" value="0" min="0" step="0.01">
+          </div>
+
+          <div class="form-row">
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" value="0" min="0" step="1">
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary btn-next" disabled>
+              Next
+            </buttton>
+          </div>
+        </div>
+
+
+        <div id="step-2" class="content-step">
+          <h2>Step 2 - Cardboard Grade</h2>
+
+          <p class="intro">
+            <strong>FantasticBoxCo</strong> offer a variety of grades of cardboard, each altering the price per m<sup>2</sup>:
+​          </p>
+
+          <ol class="btn-radios-list">
+            <li>
+              <label>
+                <input type="radio" name="cardboard-grade" value="A">
+                <span class="btn btn-radio">
+                  A Grade<br>&pound;0.20 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="cardboard-grade" value="B">
+                <span class="btn btn-radio">
+                  B Grade<br>&pound;0.10 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="cardboard-grade" value="C">
+                <span class="btn btn-radio">
+                  C Grade<br>&pound;0.05 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+          </ol>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back">
+              back
+            </buttton>
+            <button type="button" class="btn btn-primary btn-next">
+              Next
+            </buttton>
+          </div>
+        </div>
+
+
+        <div id="step-3" class="content-step">
+          <h2>Step 3 - Print Quality</h2>
+
+          <p class="intro">
+            A variety of printing options are available for any branding / logos which are required:
+          </p>
+
+          <ol class="btn-radios-list">
+            <li>
+              <label>
+                <input type="radio" name="print-quality" value="3-color">
+                <span class="btn btn-radio">
+                  3 colours<br>&pound;0.20 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="print-quality" value="2-color">
+                <span class="btn btn-radio">
+                  2 colours<br>&pound;0.10 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="print-quality" value="black-only">
+                <span class="btn btn-radio">
+                  Black only<br>&pound;0.05 m<sup>2</sup>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="print-quality" value="no-printing">
+                <span class="btn btn-radio">
+                  No printing<br>&pound;0.00
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" name="print-quality" value="FantasticBoxCo-branding">
+                <span class="btn btn-radio">
+                  <strong>FantasticBoxCo</strong> branding<br>5% discount on total price
+                </span>
+              </label>
+            </li>
+          </ol>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back">
+              back
+            </buttton>
+            <button type="button" class="btn btn-primary btn-next">
+              Next
+            </buttton>
+          </div>
+        </div>
+
+
+        <div id="step-4" class="content-step">
+          <h2>Step 4 - Optional Extras</h2>
+
+          <ol class="btn-radios-list">
+            <li>
+              <label>
+                <input type="checkbox" name="optional-extras" value="handles">
+                <span class="btn btn-radio">
+                  Handles<br>&pound;0.10 per box
+                </span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="optional-extras" value="reinforced-bottom">
+                <span class="btn btn-radio">
+                  Reinforced bottom<br>&pound;0.05 per box<br>
+                  <small>(only available with grade A cardboard)</small>
+                </span>
+              </label>
+            </li>
+          </ol>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back">
+              back
+            </buttton>
+            <button type="button" class="btn btn-primary btn-next">
+              Finish
+            </buttton>
+          </div>
+        </div>
+
+
+        <div id="total-cost" class="content-step">
+          <h2>Total Cost</h2>
+
+          <dl class="breakdown">
+            <dt>Dimensions &amp; Quantity:</dt>
+            <dd>3 &times; 10(W)&times;15.5(H)&times;13.24(L)</dd>
+
+            <dt>Cardboard Grade:</dt>
+            <dd>A grade</dd>
+
+            <dt>Print Quality:</dt>
+            <dd>3 colours</dd>
+
+            <dt>Optional Extras:</dt>
+            <dd>
+              <ol>
+                <li>Handles</li>
+                <li>Reinforce bottoms</li>
+              </ol>
+            </dd>
+
+            <dt>Total Cost:</dt>
+            <dd>&pound;0.00</dd>
+          </dl>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="/js/application.js"></script>
+</body>
+</html>
