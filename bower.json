@@ -1,0 +1,23 @@
+{
+  "name": "fantasticboxco",
+  "description": "order quoting system",
+  "main": "server.js",
+  "authors": [
+    "Tom Barnes (tombarnesmail@gmail.com)"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.4.9"
+  }
+}
