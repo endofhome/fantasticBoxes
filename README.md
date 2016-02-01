@@ -14,7 +14,7 @@ Clone this repo:
 
 Install dependencies:
 ``` npm install ```
-``` bower install ```
+Bower dependencies will be automatically installed.
 
 Spin up the server:
 ``` http-server ```
