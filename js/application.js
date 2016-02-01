@@ -1,1 +1,1 @@
-var fantasticBoxCo = angular.module('fantasticBoxCo', []);
+var fantasticBoxCo = angular.module('FantasticBoxCo', []);
