@@ -4,8 +4,11 @@ describe('FantasticBoxCo Quote system', function() {
     browser.get('http://localhost:8080');
   })
 
-  it('has a title', function() {
-    expect(browser.getTitle()).toEqual('FantasticBoxCo');
+  describe('initialisation', function() {
+
+    it('has a title', function() {
+      expect(browser.getTitle()).toEqual('FantasticBoxCo');
+    });
   });
 
 });

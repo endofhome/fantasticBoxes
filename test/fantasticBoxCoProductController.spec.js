@@ -159,7 +159,6 @@ describe('FantasticBoxCoProductController', function() {
       ctrl.length = 1;
       ctrl.cardboardGrade = 'A';
     });
-
     it('one box with no discount and no extras', function() {
       ctrl.quantity = 1;
       ctrl.printQuality = '3-color';

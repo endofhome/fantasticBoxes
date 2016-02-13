@@ -17,7 +17,7 @@
 
     this.validateCardboardGradeC = function() {
       if (this.surfaceArea() < 2) {
-        this.cardboardGrade = "C";
+        this.cardboardGrade = 'C';
       } else {
         this.errorMessage('Sorry - "C" type cardboard not available for boxes over 2m^2');
       }
@@ -66,31 +66,27 @@
     };
 
     this.cardboardCost = function(surfaceArea) {
-      switch(true) {
-        case(this.cardboardGrade==="A"):
-          return (surfaceArea * 0.2);
-        case(this.cardboardGrade==="B"):
-          return (surfaceArea * 0.1);
-        case(this.cardboardGrade==="C"):
-          return (surfaceArea * 0.05);
-      }
+      var cardboardOptions = {
+        'A': 0.2, 
+        'B': 0.1, 
+        'C': 0.05
+      };
+      return (cardboardOptions[this.cardboardGrade] * surfaceArea)
     };
 
     this.printCost = function(surfaceArea) {
+      var printOptions = {
+        '3-color':                 0.2,
+        '2-color':                 0.1,
+        'black-only':              0.05,
+        'no-printing':             0,
+        'FantasticBoxCo-branding': 0
+      };
       this.resetDiscount();
-      switch(true) {
-        case(this.printQuality==="3-color"):
-          return (surfaceArea * 0.2);
-        case(this.printQuality==="2-color"):
-          return (surfaceArea * 0.1);
-        case(this.printQuality==="black-only"):
-          return (surfaceArea * 0.05);
-        case(this.printQuality==="no-printing"):
-          return 0;
-        case(this.printQuality==="FantasticBoxCo-branding"):
-          this.brandDiscount = 0.95;
-          return 0;  
-      }
+      if (this.printQuality === 'FantasticBoxCo-branding') {
+        this.brandDiscount = 0.95;
+      };
+      return (printOptions[this.printQuality] * surfaceArea);
     };
 
     this.resetDiscount = function() {
