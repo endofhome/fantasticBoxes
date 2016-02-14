@@ -27,13 +27,13 @@
               <h3 class="step-heading">Dimensions &amp; Quantity</h3>
               <dl>
                 <dt>Width:</dt>
-                <dd>{{productCtrl.width | number:2}}m</dd>
+                <dd>{{productCtrl.order.width | number:2}}m</dd>
                 <dt>Height:</dt>
-                <dd>{{productCtrl.height | number:2}}m</dd>
+                <dd>{{productCtrl.order.height | number:2}}m</dd>
                 <dt>Length:</dt>
-                <dd>{{productCtrl.length | number:2}}m</dd>
+                <dd>{{productCtrl.order.length | number:2}}m</dd>
                 <dt>Quantity:</dt>
-                <dd>{{productCtrl.quantity}}</dd>
+                <dd>{{productCtrl.order.quantity}}</dd>
               </dl>
             </a>
           </li>
@@ -41,27 +41,27 @@
             <a href="#step-2" class="step step-2" ng-class="{'is-active':productCtrl.tab===2}">
               <div class="step-number">2</div>
               <h3 class="step-heading">Cardboard Grade</h3>
-              <span class="step-value">{{productCtrl.cardboardGrade}}</span>
+              <span class="step-value">{{productCtrl.order.cardboardGrade}}</span>
             </a>
           </li>
           <li>
             <a href="#step-3" class="step step-3" ng-class="{'is-active':productCtrl.tab===3}">
               <div class="step-number">3</div>
               <h3 class="step-heading">Print Quality</h3>
-              <span class="step-value">{{productCtrl.printQuality}}</span>
+              <span class="step-value">{{productCtrl.order.printQuality}}</span>
             </a>
           </li>
           <li>
             <a href="#step-4" class="step step-4" ng-class="{'is-active':productCtrl.tab===4}">
               <div class="step-number">4</div>
               <h3 class="step-heading">Optional Extras</h3>
-              <span class="step-value" ng-repeat="item in productCtrl.extras">{{item}}<br></span>
+              <span class="step-value" ng-repeat="item in productCtrl.order.extras">{{item}}<br></span>
             </a>
           </li>
           <li>
             <a href="#total-cost" class="step step-total-cost" ng-class="{'is-active':productCtrl.tab===5}">
               <h3 class="step-total-cost-heading">Total Cost</h3>
-              <div class="step-total-cost-value">{{productCtrl.calculateTotal() | currency:"£":2}}</div>
+              <div class="step-total-cost-value">{{productCtrl.order.calculateTotal() | currency:"£":2}}</div>
             </a>
           </li>
         </ul>
@@ -78,22 +78,22 @@
           <form name="step1Form">
             <div class="form-row">
               <label for="width">Width:</label>
-              <input type="number" name="width" id="width" value="0" min="0.01" step="0.01" ng-model="productCtrl.width" required />
+              <input type="number" name="width" id="width" value="0" min="0.01" step="0.01" ng-model="productCtrl.order.width" required />
             </div>
 
             <div class="form-row">
               <label for="height">Height:</label>
-              <input type="number" name="height" id="height" value="0" min="0.01" step="0.01" ng-model="productCtrl.height" required />
+              <input type="number" name="height" id="height" value="0" min="0.01" step="0.01" ng-model="productCtrl.order.height" required />
             </div>
 
             <div class="form-row">
               <label for="length">Length:</label>
-              <input type="number" name="length" id="length" value="0" min="0.01" step="0.01" ng-model="productCtrl.length" required />
+              <input type="number" name="length" id="length" value="0" min="0.01" step="0.01" ng-model="productCtrl.order.length" required />
             </div>
 
             <div class="form-row">
               <label for="quantity">Quantity:</label>
-              <input type="number" name="quantity" id="quantity" value="0" min="1" step="1" ng-model="productCtrl.quantity" required />
+              <input type="number" name="quantity" id="quantity" value="0" min="1" step="1" ng-model="productCtrl.order.quantity" required />
             </div>
 
             <div class="form-actions">
@@ -116,7 +116,7 @@
             <ol class="btn-radios-list">
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="A" ng-model="productCtrl.cardboardGrade" />
+                  <input type="radio" name="cardboard-grade" value="A" ng-model="productCtrl.order.cardboardGrade" />
                   <span class="btn btn-radio">
                     A Grade<br>&pound;0.20 m<sup>2</sup>
                   </span>
@@ -124,7 +124,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="B" ng-model="productCtrl.cardboardGrade" />
+                  <input type="radio" name="cardboard-grade" value="B" ng-model="productCtrl.order.cardboardGrade" />
                   <span class="btn btn-radio">
                     B Grade<br>&pound;0.10 m<sup>2</sup>
                   </span>
@@ -132,7 +132,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="C" ng-model="productCtrl.cardboardGrade" ng-click="productCtrl.validateCardboardGradeC()" />
+                  <input type="radio" name="cardboard-grade" value="C" ng-model="productCtrl.order.cardboardGrade" ng-click="productCtrl.order.validateCardboardGradeC()" />
                   <span class="btn btn-radio">
                     C Grade<br>&pound;0.05 m<sup>2</sup>
                   </span>
@@ -145,7 +145,7 @@
             <button type="button" class="btn btn-back" ng-click="productCtrl.tab=1">
               back
             </buttton>
-            <button type="button" class="btn btn-primary btn-next" ng-disabled="step2Form.$pristine" ng-click="productCtrl.cardboardCost() ; productCtrl.tab=3">
+            <button type="button" class="btn btn-primary btn-next" ng-disabled="step2Form.$pristine" ng-click="productCtrl.order.cardboardCost() ; productCtrl.tab=3">
               Next
             </buttton>
           </div>
@@ -163,7 +163,7 @@
             <ol class="btn-radios-list">
               <li>
                 <label>
-                  <input type="radio" name="print-quality" value="3-color" ng-model="productCtrl.printQuality" />
+                  <input type="radio" name="print-quality" value="3-color" ng-model="productCtrl.order.printQuality" />
                   <span class="btn btn-radio">
                     3 colours<br>&pound;0.20 m<sup>2</sup>
                   </span>
@@ -171,7 +171,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="print-quality" value="2-color" ng-model="productCtrl.printQuality" />
+                  <input type="radio" name="print-quality" value="2-color" ng-model="productCtrl.order.printQuality" />
                   <span class="btn btn-radio">
                     2 colours<br>&pound;0.10 m<sup>2</sup>
                   </span>
@@ -179,7 +179,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="print-quality" value="black-only" ng-model="productCtrl.printQuality" />
+                  <input type="radio" name="print-quality" value="black-only" ng-model="productCtrl.order.printQuality" />
                   <span class="btn btn-radio">
                     Black only<br>&pound;0.05 m<sup>2</sup>
                   </span>
@@ -187,7 +187,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="print-quality" value="no-printing" ng-model="productCtrl.printQuality" />
+                  <input type="radio" name="print-quality" value="no-printing" ng-model="productCtrl.order.printQuality" />
                   <span class="btn btn-radio">
                     No printing<br>&pound;0.00
                   </span>
@@ -195,7 +195,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="print-quality" value="FantasticBoxCo-branding" ng-model="productCtrl.printQuality" />
+                  <input type="radio" name="print-quality" value="FantasticBoxCo-branding" ng-model="productCtrl.order.printQuality" />
                   <span class="btn btn-radio">
                     <strong>FantasticBoxCo</strong> branding<br>5% discount on total price
                   </span>
@@ -222,7 +222,7 @@
             <ol class="btn-radios-list">
               <li>
                 <label>
-                  <input type="checkbox" name="optional-extras" value="handles" ng-click="productCtrl.toggleHandles()">
+                  <input type="checkbox" name="optional-extras" value="handles" ng-click="productCtrl.order.toggleHandles()">
                   <span class="btn btn-radio">
                     Handles<br>&pound;0.10 per box
                   </span>
@@ -230,7 +230,7 @@
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="optional-extras" value="reinforced-bottom" ng-click="productCtrl.validateReinforcedBottom()" />
+                  <input type="checkbox" name="optional-extras" value="reinforced-bottom" ng-click="productCtrl.order.validateReinforcedBottom()" />
                   <span class="btn btn-radio">
                     Reinforced bottom<br>&pound;0.05 per box<br>
                     <small>(only available with grade A cardboard)</small>
@@ -257,23 +257,23 @@
 
           <dl class="breakdown">
             <dt>Dimensions &amp; Quantity:</dt>
-            <dd>{{productCtrl.quantity}} &times; {{productCtrl.width}}(W)&times;{{productCtrl.height}}(H)&times;{{productCtrl.length}}(L)</dd>
+            <dd>{{productCtrl.order.quantity}} &times; {{productCtrl.order.width}}(W)&times;{{productCtrl.order.height}}(H)&times;{{productCtrl.order.length}}(L)</dd>
 
             <dt>Cardboard Grade:</dt>
-            <dd>{{productCtrl.cardboardGrade}} grade</dd>
+            <dd>{{productCtrl.order.cardboardGrade}} grade</dd>
 
             <dt>Print Quality:</dt>
-            <dd>{{productCtrl.printQuality}}</dd>
+            <dd>{{productCtrl.order.printQuality}}</dd>
 
             <dt>Optional Extras:</dt>
             <dd>
-              <ol ng-repeat="item in productCtrl.extras">
+              <ol ng-repeat="item in productCtrl.order.extras">
                 {{$index + 1}}. {{item}}
               </ol>
             </dd>
 
             <dt>Total Cost:</dt>
-            <dd>{{productCtrl.calculateTotal() | currency:"£":2}}</dd>
+            <dd>{{productCtrl.order.calculateTotal() | currency:"£":2}}</dd>
           </dl>
         </div>
       </section>
@@ -284,5 +284,6 @@
   <script src="bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="/js/application.js"></script>
   <script type="text/javascript" src="/js/fantasticBoxCoProductController.js"></script>
+  <script type="text/javascript" src="/js/fantasticBoxCoOrderService.js"></script>
 </body>
 </html>

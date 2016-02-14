@@ -10,5 +10,4 @@ describe('FantasticBoxCo Quote system', function() {
       expect(browser.getTitle()).toEqual('FantasticBoxCo');
     });
   });
-
 });
