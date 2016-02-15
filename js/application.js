@@ -1,1 +1,1 @@
-var fantasticBoxCo = angular.module('FantasticBoxCo', []);
+var fantasticBoxCo = angular.module('FantasticBoxCo', ['ngFlash']);

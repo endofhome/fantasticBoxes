@@ -1,7 +1,10 @@
 describe('FantasticBoxCoProductController', function() {
-  beforeEach(module('FantasticBoxCo'));
 
   var ctrl;
+
+  beforeEach(function(){
+    module('FantasticBoxCo');
+  });
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('FantasticBoxCoProductController');
@@ -11,5 +14,5 @@ describe('FantasticBoxCoProductController', function() {
     it('initialises at the first tab', function() {
       expect(ctrl.tab).toEqual(1);
     });
-  }); 
+  });
 });

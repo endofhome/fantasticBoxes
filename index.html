@@ -8,6 +8,7 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
   <meta name="author" content="@alliants">
   <link rel="stylesheet" media="all" href="/css/application.css">
+  <link type="text/css" rel="stylesheet" href="bower_components/angular-flash-alert/dist/angular-flash.min.css">
   <link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="/favicon.ico">
 </head>
@@ -97,7 +98,7 @@
             </div>
 
             <div class="form-actions">
-              <button type="button" class="btn btn-primary btn-next" ng-click="productCtrl.tab=2" ng-disabled="step1Form.$invalid">
+              <button type="button" class="btn btn-primary btn-next" ng-click="productCtrl.tab=2 ; productCtrl.order.validateNewSize()" ng-disabled="step1Form.$invalid">
                 Next
               </button>
             </div>
@@ -116,7 +117,7 @@
             <ol class="btn-radios-list">
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="A" ng-model="productCtrl.order.cardboardGrade" />
+                  <input type="radio" name="cardboardSelectorA" value="A" ng-model="productCtrl.order.cardboardGrade" ng-click="productCtrl.order.dismissFlashMsg()" />
                   <span class="btn btn-radio">
                     A Grade<br>&pound;0.20 m<sup>2</sup>
                   </span>
@@ -124,7 +125,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="B" ng-model="productCtrl.order.cardboardGrade" />
+                  <input type="radio" name="cardboardSelectorB" value="B" ng-model="productCtrl.order.cardboardGrade" ng-click="productCtrl.order.dismissFlashMsg()" />
                   <span class="btn btn-radio">
                     B Grade<br>&pound;0.10 m<sup>2</sup>
                   </span>
@@ -132,7 +133,7 @@
               </li>
               <li>
                 <label>
-                  <input type="radio" name="cardboard-grade" value="C" ng-model="productCtrl.order.cardboardGrade" ng-click="productCtrl.order.validateCardboardGradeC()" />
+                  <input type="radio" name="cardboardSelectorC" ng-click="productCtrl.order.validateCardboardGradeC()" />
                   <span class="btn btn-radio">
                     C Grade<br>&pound;0.05 m<sup>2</sup>
                   </span>
@@ -144,10 +145,11 @@
           <div class="form-actions">
             <button type="button" class="btn btn-back" ng-click="productCtrl.tab=1">
               back
-            </buttton>
+            </button>
             <button type="button" class="btn btn-primary btn-next" ng-disabled="step2Form.$pristine" ng-click="productCtrl.order.cardboardCost() ; productCtrl.tab=3">
               Next
-            </buttton>
+            </button>
+            <flash-message show-close="true"></flash-message> 
           </div>
         </div>
 
@@ -206,10 +208,10 @@
             <div class="form-actions">
               <button type="button" class="btn btn-back" ng-click="productCtrl.tab=2">
                 back
-              </buttton>
-              <button type="button" class="btn btn-primary btn-next" ng-disabled="step3Form.$pristine" ng-click="productCtrl.tab=4">
+              </button>
+              <button type="button" class="btn btn-primary btn-next" ng-disabled="step3Form.$pristine" ng-click="productCtrl.tab=4 ; productCtrl.order.validateNewCardboardGrade()">
                 Next
-              </buttton>
+              </button>
             </div>
           </div>
         </form>
@@ -222,7 +224,7 @@
             <ol class="btn-radios-list">
               <li>
                 <label>
-                  <input type="checkbox" name="optional-extras" value="handles" ng-click="productCtrl.order.toggleHandles()">
+                  <input type="checkbox" name="handles" value="handles" ng-click="productCtrl.order.toggleHandles()">
                   <span class="btn btn-radio">
                     Handles<br>&pound;0.10 per box
                   </span>
@@ -230,7 +232,7 @@
               </li>
               <li>
                 <label>
-                  <input type="checkbox" name="optional-extras" value="reinforced-bottom" ng-click="productCtrl.order.validateReinforcedBottom()" />
+                  <input type="checkbox" name="reinforcedBottom" value="reinforced-bottom" ng-click="productCtrl.order.validateReinforcedBottom()" />
                   <span class="btn btn-radio">
                     Reinforced bottom<br>&pound;0.05 per box<br>
                     <small>(only available with grade A cardboard)</small>
@@ -242,10 +244,11 @@
             <div class="form-actions">
               <button type="button" class="btn btn-back" ng-click="productCtrl.tab=3">
                 back
-              </buttton>
+              </button>
               <button type="button" class="btn btn-primary btn-next" ng-click="productCtrl.tab=5">
                 Finish
-              </buttton>
+              </button>
+              <flash-message show-close="true"></flash-message>
             </div>
 
           </div>
@@ -282,6 +285,7 @@
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-flash-alert/dist/angular-flash.js"></script>
   <script type="text/javascript" src="/js/application.js"></script>
   <script type="text/javascript" src="/js/fantasticBoxCoProductController.js"></script>
   <script type="text/javascript" src="/js/fantasticBoxCoOrderService.js"></script>

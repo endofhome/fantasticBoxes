@@ -128,26 +128,60 @@ describe('service: Order', function() {
     });
   });
 
-  describe('checking invalid options', function() {
-    it('alerts user if they try to order type C cardboard with a box over 2m^2', function() {;
+  describe('checking invalid options with error messages', function() {
+
+    beforeEach(function(){
+      spyOn(order, 'errorMessage');
+    });
+
+    xit('errorMessage is called if user tries to order type C cardboard with a box over 2m^2', function() {
+      order.width = 1;
+      order.height = 1;
+      order.length = 1;   
+      order.validateCardboardGradeC();
+      expect(order.cardboardGrade !== 'C');
+      expect(order.errorMessage).toHaveBeenCalledWith('Sorry - "C" grade cardboard not available for boxes over 2m^2');
+    });
+    xit('errorMessage is called if user tries to order reinforced bottom with type "B" cardboard', function() {
+      order.cardboardGrade = 'B';
+      order.validateReinforcedBottom();
+      expect(order.errorMessage).toHaveBeenCalledWith('Sorry - reinforced bottom only available for "A" grade cardboard');
+    });
+    xit('alerts user if they try to order reinforced bottom with type "C" cardboard', function() {
+      order.cardboardGrade = 'C';
+      order.validateReinforcedBottom();
+      expect(order.errorMessage).toHaveBeenCalledWith('Sorry - reinforced bottom only available for "A" grade cardboard');
+    });
+  });
+
+  describe('invalid reinforced bottom revision', function() {
+
+    beforeEach(function() {
+      order.extras =  ['Handles', 'Reinforced Bottom'];
+    });
+
+    it('reinforced bottom is removed from order if user revises cardboard grade to B', function() {
+      order.cardboardGrade = 'B';
+      order.validateNewCardboardGrade();
+      expect(order.reinforcedBottom).toEqual(false);
+      expect(order.extras).toEqual(['Handles']);
+    });
+    it('reinforced bottom is removed from order if user revises cardboard grade to C', function() {
+      order.cardboardGrade = 'C';
+      order.validateNewCardboardGrade();
+      expect(order.reinforcedBottom).toEqual(false);
+      expect(order.extras).toEqual(['Handles']);
+    });
+  });
+
+  describe('invalid cardboard grade revision', function() {
+    it('cardboard grade C is removed if user revises box size to over 2m^2', function() {
+      order.cardboardGrade = 'C';
       order.width = 1;
       order.height = 1;
       order.length = 1;
-      spyOn(window, 'alert');
-      order.validateCardboardGradeC();
-      expect(window.alert).toHaveBeenCalledWith('Sorry - "C" type cardboard not available for boxes over 2m^2');
-    });
-    it('alerts user if they try to order reinforced bottom with type "B" cardboard', function() {;
-      order.cardboardGrade = 'B';
-      spyOn(window, 'alert');
-      order.validateReinforcedBottom();
-      expect(window.alert).toHaveBeenCalledWith('Sorry - reinforced bottom only available for type "A" cardboard');
-    });
-    it('alerts user if they try to order reinforced bottom with type "C" cardboard', function() {;
-      order.cardboardGrade = 'C';
-      spyOn(window, 'alert');
-      order.validateReinforcedBottom();
-      expect(window.alert).toHaveBeenCalledWith('Sorry - reinforced bottom only available for type "A" cardboard');
+      order.validateNewSize();
+      expect(order.cardboardGrade).toEqual('-');   
     });
   });
 
